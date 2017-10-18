@@ -24,6 +24,15 @@ Programs start running in package main.
 
 By convention, the package name is the same as the last element of the import path.
 
+#### Imports
+
+"factored" import statement: groups the imports into a parenthesized.
+
+    import (
+        "fmt"
+        "math"
+    )
+
 ### How to write Go codes
 
 #### Introduction
