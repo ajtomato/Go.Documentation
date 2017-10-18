@@ -16,6 +16,14 @@ The *GOPATH* environment variable specifies the location of your workspace. If n
 
 ### A Tour of Go
 
+#### Packages
+
+Every Go program is made up of packages.
+
+Programs start running in package main.
+
+By convention, the package name is the same as the last element of the import path.
+
 ### How to write Go codes
 
 #### Introduction
@@ -94,6 +102,3 @@ If you include the repository URL in the package's import path, go get will fetc
 If the specified package is not present in a workspace, go get will place it inside the first workspace specified by *GOPATH*. (If the package does already exist, *go get* skips the remote fetch and behaves the same as *go install*.)
 
 The *go get* command is able to locate and install the dependent package, too.
-
-#### What's next
-#### Getting help
