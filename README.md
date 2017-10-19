@@ -49,6 +49,14 @@ When two or more consecutive named function parameters share a type, you can omi
 	    return x + y
     }
 
+#### Multiple results
+
+A function can return any number of results.
+
+    func swap(x, y string) (string, string) {
+	    return y, x
+    }
+
 ### How to write Go codes
 
 #### Introduction
