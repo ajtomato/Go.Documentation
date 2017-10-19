@@ -69,6 +69,23 @@ A return statement without arguments returns the named return values. This is kn
         return
     }
 
+#### Variables
+
+The *var* statement declares a list of variables; as in function argument lists, the type is last.
+
+A *var* statement can be at package or function level.
+
+    package main
+
+    import "fmt"
+
+    var c, python, java bool
+
+    func main() {
+        var i int
+        fmt.Println(i, c, python, java)
+    }
+
 ### How to write Go codes
 
 #### Introduction
