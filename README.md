@@ -33,6 +33,12 @@ By convention, the package name is the same as the last element of the import pa
         "math"
     )
 
+#### Exported names
+
+In Go, a name is exported if it begins with a capital letter.
+
+When importing a package, you can refer only to its exported names.
+
 ### How to write Go codes
 
 #### Introduction
