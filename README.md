@@ -86,6 +86,21 @@ A *var* statement can be at package or function level.
         fmt.Println(i, c, python, java)
     }
 
+#### Variables with initializers
+
+If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
+
+    package main
+
+    import "fmt"
+
+    var i, j int = 1, 2
+
+    func main() {
+        var c, python, java = true, false, "no!"
+        fmt.Println(i, j, c, python, java)
+    }
+
 ### How to write Go codes
 
 #### Introduction
