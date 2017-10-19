@@ -39,6 +39,16 @@ In Go, a name is exported if it begins with a capital letter.
 
 When importing a package, you can refer only to its exported names.
 
+#### Functions
+
+The type comes after the variable name.
+
+When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
+
+    func add(x, y int) int {
+	    return x + y
+    }
+
 ### How to write Go codes
 
 #### Introduction
