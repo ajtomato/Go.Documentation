@@ -133,6 +133,12 @@ The zero value is:
 * false for the boolean type, and
 * "" (the empty string) for strings.
 
+#### Type conversions
+
+The expression T(v) converts the value v to the type T.
+
+Unlike in C, in Go assignment between items of different type requires an explicit conversion.
+
 ### How to write Go codes
 
 #### Introduction
