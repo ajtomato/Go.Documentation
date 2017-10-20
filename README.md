@@ -139,6 +139,14 @@ The expression T(v) converts the value v to the type T.
 
 Unlike in C, in Go assignment between items of different type requires an explicit conversion.
 
+#### Type inference
+
+When declaring a variable without specifying an explicit type (either by using the := syntax or var = expression syntax), the variable's type is inferred from the value on the right hand side.
+
+When the right hand side of the declaration is typed, the new variable is of that same type.
+
+But when the right hand side contains an untyped numeric constant, the new variable may be an *int*, *float64*, or *complex128* depending on the precision of the constant.
+
 ### How to write Go codes
 
 #### Introduction
