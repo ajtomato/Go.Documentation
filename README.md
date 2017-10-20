@@ -123,6 +123,16 @@ Go's basic types are:
 * float32 float64
 * complex64 complex128
 
+#### Zero values
+
+Variables declared without an explicit initial value are given their zero value.
+
+The zero value is:
+
+* 0 for numeric types,
+* false for the boolean type, and
+* "" (the empty string) for strings.
+
 ### How to write Go codes
 
 #### Introduction
