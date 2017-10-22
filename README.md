@@ -155,6 +155,12 @@ Constants are declared like variables, but with the const keyword.
 
 Constants cannot be declared using the := syntax.
 
+#### Numeric Constants
+
+Numeric constants are high-precision values.
+
+An untyped constant takes the type needed by its context.
+
 ### How to write Go codes
 
 #### Introduction
