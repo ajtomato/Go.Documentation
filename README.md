@@ -147,6 +147,14 @@ When the right hand side of the declaration is typed, the new variable is of tha
 
 But when the right hand side contains an untyped numeric constant, the new variable may be an *int*, *float64*, or *complex128* depending on the precision of the constant.
 
+#### Constants
+
+Constants are declared like variables, but with the const keyword.
+
+    const Pi = 3.14
+
+Constants cannot be declared using the := syntax.
+
 ### How to write Go codes
 
 #### Introduction
