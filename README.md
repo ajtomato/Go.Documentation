@@ -161,6 +161,28 @@ Numeric constants are high-precision values.
 
 An untyped constant takes the type needed by its context.
 
+#### For
+
+Go has only one looping construct, the *for* loop.
+
+    for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+    for ; sum < 1000; {
+		sum += sum
+	}
+
+    for sum < 1000 {
+		sum += sum
+	}
+
+    // Forever
+    for {
+	}
+
+The braces { } are always required.
+
 ### How to write Go codes
 
 #### Introduction
