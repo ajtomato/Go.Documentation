@@ -201,6 +201,37 @@ Go's *if* statements are like its *for* loops; the expression need not be surrou
 		fmt.Printf("%g >= %g\n", v, lim)
 	}
 
+#### Switch
+
+Go only runs the selected case, not all the cases that follow.
+
+Go's switch cases need not be constants, and the values involved need not be integers.
+
+    switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.", os)
+	}
+
+Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+
+Switch without a condition is the same as switch true. This construct can be a clean way to write long if-then-else chains.
+
+    t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+
 ### How to write Go codes
 
 #### Introduction
