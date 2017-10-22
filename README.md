@@ -183,6 +183,24 @@ Go has only one looping construct, the *for* loop.
 
 The braces { } are always required.
 
+#### If
+
+Go's *if* statements are like its *for* loops; the expression need not be surrounded by parentheses ( ) but the braces { } are required.
+
+    if x < 0 {
+		return sqrt(-x) + "i"
+	}
+
+    if v := math.Pow(x, n); v < lim {
+		return v
+	}
+
+    if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+
 ### How to write Go codes
 
 #### Introduction
