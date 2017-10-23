@@ -277,6 +277,14 @@ A *struct literal* denotes a newly allocated struct value by listing the values 
 	v3 = Vertex{}      // X:0 and Y:0
 	p  = &Vertex{1, 2} // has type *Vertex
 
+#### Arrays
+
+The type *[n]T* is an array of n values of type T.
+
+An array's length is part of its type, so arrays cannot be resized.
+
+    var a [10]int
+
 ### How to write Go codes
 
 #### Introduction
