@@ -242,6 +242,18 @@ The deferred call's arguments are evaluated immediately, but the function call i
 
 Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.
 
+#### Pointers
+
+A pointer holds the memory address of a value.
+
+The type *T is a pointer to a T value. Its zero value is nil.
+
+    var p *int
+    i := 42
+    p = &i
+    fmt.Println(*p) // read i through the pointer p
+    *p = 21         // set i through the pointer p
+
 ### How to write Go codes
 
 #### Introduction
