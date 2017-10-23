@@ -285,6 +285,59 @@ An array's length is part of its type, so arrays cannot be resized.
 
     var a [10]int
 
+#### Slices
+
+The type *[]T* is a slice with elements of type T. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
+
+A slice is formed by specifying two indices, a low and high bound, separated by a colon:
+
+    a[low : high]
+
+This selects a half-open range which includes the first element, but excludes the last one.
+
+A slice does not store any data, it just describes a section of an underlying array. Changing the elements of a slice modifies the corresponding elements of its underlying array.
+
+A *slice literal* is like an array literal without the length.
+
+    q := []int{2, 3, 5, 7, 11, 13}
+
+When slicing, you may omit the high or low bounds to use their defaults instead. The default is zero for the low bound and the length of the slice for the high bound.
+
+    var a [10]int
+    
+    // these slice expressions are equivalent:
+    a[0:10]
+    a[:10]
+    a[0:]
+    a[:]
+
+A slice has both a *length* and a *capacity*. The *length* of a slice is the number of elements it contains. The *capacity* of a slice is the number of elements in the underlying array, counting from the first element in the slice.
+
+    s := []int{2, 3, 5, 7, 11, 13}
+    fmt.Printf("len=%d cap=%d %v\n", len(s[1:3]), cap(s[2:3]), s)
+
+The zero value of a slice is *nil*. A *nil slice* has a length and capacity of 0 and has no underlying array.
+
+Slices can be created with the built-in *make* function; this is how you create dynamically-sized arrays. The *make* function allocates a **zeroed** array and returns a slice that refers to that array. To specify a capacity, pass a third argument to make.
+
+    a := make([]int, 5)     // len(a)=5
+    b := make([]int, 0, 5)  // len(b)=0, cap(b)=5
+
+It is common to append new elements to a slice, and so Go provides a built-in *append* function.
+
+    func append(s []T, vs ...T) []T
+
+    var s []int
+
+	// append works on nil slices.
+	s = append(s, 0)
+
+	// The slice grows as needed.
+	s = append(s, 1)
+
+	// We can add more than one element at a time.
+	s = append(s, 2, 3, 4)
+
 ### How to write Go codes
 
 #### Introduction
