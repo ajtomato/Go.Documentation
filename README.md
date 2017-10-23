@@ -338,6 +338,29 @@ It is common to append new elements to a slice, and so Go provides a built-in *a
 	// We can add more than one element at a time.
 	s = append(s, 2, 3, 4)
 
+#### Range
+
+The *range* form of the for loop iterates over a slice or map.
+
+When ranging over a slice, two values are returned for each iteration. The first is the index, and the second is a copy of the element at that index.
+
+    var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+    for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+
+You can skip the index or value by assigning to _.
+
+If you only want the index, drop the ", value" entirely.
+
+    pow := make([]int, 10)
+	for i := range pow {
+		pow[i] = 1 << uint(i) // == 2**i
+	}
+	for _, value := range pow {
+		fmt.Printf("%d\n", value)
+	}
+
 ### How to write Go codes
 
 #### Introduction
