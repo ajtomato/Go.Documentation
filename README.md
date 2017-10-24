@@ -361,6 +361,51 @@ If you only want the index, drop the ", value" entirely.
 		fmt.Printf("%d\n", value)
 	}
 
+#### Maps
+
+The zero value of a map is *nil*. A *nil* map has no keys, nor can keys be added.
+
+The make function returns a map of the given type, initialized and ready for use.
+
+    var m map[string]Vertex
+    m = make(map[string]Vertex)
+
+Map literals
+
+    var m = map[string]Vertex{
+        "Bell Labs": Vertex{
+            40.68433, -74.39967,
+        },
+        "Google": Vertex{
+            37.42202, -122.08408,
+        },
+    }
+
+    // If the top-level type is just a type name, you can omit it from the elements of the literal.
+    var m = map[string]Vertex{
+        "Bell Labs": {40.68433, -74.39967},
+        "Google":    {37.42202, -122.08408},
+    }
+
+Insert or update an element in map m:
+
+    m[key] = elem
+
+Retrieve an element:
+
+    elem = m[key]
+
+Delete an element:
+
+    delete(m, key)
+
+Test that a key is present with a two-value assignment:
+
+    elem, ok := m[key]
+
+* If key is in m, ok is true. If not, ok is false.
+* If key is not in the map, then elem is the zero value for the map's element type.
+
 ### How to write Go codes
 
 #### Introduction
