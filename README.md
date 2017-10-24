@@ -406,6 +406,12 @@ Test that a key is present with a two-value assignment:
 * If key is in m, ok is true. If not, ok is false.
 * If key is not in the map, then elem is the zero value for the map's element type.
 
+#### Function values
+
+Functions are values too. They can be passed around just like other values.
+
+Function values may be used as function arguments and return values.
+
 ### How to write Go codes
 
 #### Introduction
