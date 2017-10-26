@@ -514,6 +514,15 @@ Methods with value receivers take either a value or a pointer as the receiver wh
     p := &v
     fmt.Println(p.Abs()) // OK
 
+#### Choosing a value or pointer receiver
+
+There are two reasons to use a pointer receiver.
+
+* The first is so that the method can modify the value that its receiver points to.
+* The second is to avoid copying the value on each method call. This can be more efficient if the receiver is a large struct, for example.
+
+In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both.
+
 ### How to write Go codes
 
 #### Introduction
