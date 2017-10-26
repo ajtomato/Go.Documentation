@@ -489,6 +489,31 @@ Methods with pointer receivers can modify the value to which the receiver points
 
 With a value receiver, the method operates on a copy of the original value.
 
+#### Methods and pointer indirection
+
+Methods with pointer receivers take either a value or a pointer as the receiver when they are called:
+
+    func (v *Vertex) Scale(f float64) {
+        v.X = v.X * f
+        v.Y = v.Y * f
+    }
+
+    var v Vertex
+    v.Scale(5)  // OK
+    p := &v
+    p.Scale(10) // OK
+
+Methods with value receivers take either a value or a pointer as the receiver when they are called:
+
+    func (v Vertex) Abs() float64 {
+        return math.Sqrt(v.X*v.X + v.Y*v.Y)
+    }
+
+    var v Vertex
+    fmt.Println(v.Abs()) // OK
+    p := &v
+    fmt.Println(p.Abs()) // OK
+
 ### How to write Go codes
 
 #### Introduction
