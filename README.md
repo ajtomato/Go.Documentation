@@ -523,6 +523,48 @@ There are two reasons to use a pointer receiver.
 
 In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both.
 
+#### Interfaces
+
+An interface type is defined as a set of method signatures.
+
+A value of interface type can hold any value that implements those methods.
+
+    type Abser interface {
+        Abs() float64
+    }
+
+A type implements an interface by implementing its methods. There is no explicit declaration of intent, no "implements" keyword.
+
+Interface values can be thought of as a tuple of a value and a concrete type:
+
+    (value, type)
+
+An interface value holds a value of a specific underlying concrete type.
+
+Calling a method on an interface value executes the method of the same name on its underlying type.
+
+If the concrete value inside the interface itself is *nil*, the method will be called with a nil receiver.
+
+In some languages this would trigger a null pointer exception, but in Go it is common to write methods that gracefully handle being called with a *nil* receiver (as with the method M in this example.)
+
+    func (t *T) M() {
+        if t == nil {
+            fmt.Println("<nil>")
+            return
+        }
+        fmt.Println(t.S)
+    }
+
+Note that an interface value that holds a *nil* concrete value is itself non-nil.
+
+A nil interface value holds neither value nor concrete type. Calling a method on a nil interface is a run-time error.
+
+The interface type that specifies zero methods is known as the *empty interface*:
+
+    interface{}
+
+An *empty interface* may hold values of any type. Empty interfaces are used by code that handles values of unknown type.
+
 ### How to write Go codes
 
 #### Introduction
