@@ -470,6 +470,25 @@ You can only declare a method with a receiver whose type is defined in the same 
         return float64(f)
     }
 
+#### Pointer receivers
+
+You can declare methods with pointer receivers.
+
+This means the receiver type has the literal syntax *T for some type T. (Also, T cannot itself be a pointer such as *int.)
+
+    type Vertex struct {
+        X, Y float64
+    }
+
+    func (v *Vertex) Scale(f float64) {
+        v.X = v.X * f
+        v.Y = v.Y * f
+    }
+
+Methods with pointer receivers can modify the value to which the receiver points. Since methods often need to modify their receiver, pointer receivers are more common than value receivers.
+
+With a value receiver, the method operates on a copy of the original value.
+
 ### How to write Go codes
 
 #### Introduction
