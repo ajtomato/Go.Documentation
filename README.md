@@ -603,6 +603,16 @@ One of the most ubiquitous interfaces is *Stringer* defined by the *fmt* package
         String() string
     }
 
+#### Errors
+
+Go programs express error state with error values. The error type is a built-in interface similar to fmt.Stringer:
+
+    type error interface {
+        Error() string
+    }
+
+A *nil* error denotes success; a non-nil error denotes failure.
+
 ### How to write Go codes
 
 #### Introduction
