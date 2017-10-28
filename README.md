@@ -595,6 +595,14 @@ A type switch is a construct that permits several type assertions in series.
         // no match; here v has the same type as i
     }
 
+#### Stringers
+
+One of the most ubiquitous interfaces is *Stringer* defined by the *fmt* package.
+
+    type Stringer interface {
+        String() string
+    }
+
 ### How to write Go codes
 
 #### Introduction
