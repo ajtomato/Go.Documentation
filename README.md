@@ -577,10 +577,23 @@ A type assertion provides access to an interface value's underlying concrete val
 To test whether an interface value holds a specific type, a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
 
     t, ok := i.(T)
-    
+
 If i holds a T, then t will be the underlying value and ok will be true.
 
 If not, ok will be false and t will be the zero value of type T, and no panic occurs.
+
+#### Type switches
+
+A type switch is a construct that permits several type assertions in series.
+
+    switch v := i.(type) {
+    case T:
+        // here v has type T
+    case S:
+        // here v has type S
+    default:
+        // no match; here v has the same type as i
+    }
 
 ### How to write Go codes
 
