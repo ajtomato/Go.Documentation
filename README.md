@@ -613,6 +613,14 @@ Go programs express error state with error values. The error type is a built-in 
 
 A *nil* error denotes success; a non-nil error denotes failure.
 
+#### Readers
+
+The *io* package specifies the *io.Reader* interface, which represents the read end of a stream of data.
+
+    func (T) Read(b []byte) (n int, err error)
+
+*Read* populates the given byte slice with data and returns the number of bytes populated and an error value. It returns an *io.EOF* error when the stream ends.
+
 ### How to write Go codes
 
 #### Introduction
