@@ -629,6 +629,18 @@ A *goroutine* is a lightweight thread managed by the Go runtime.
 
 The evaluation of f, x, y, and z happens in the current goroutine and the execution of f happens in the new goroutine.
 
+#### Channels
+
+Channels are a typed conduit through which you can send and receive values with the channel operator, <-.
+
+    ch := make(chan int)
+    ch <- v     // Send v to channel ch.
+    v := <-ch   // Receive from ch, and assign value to v.
+
+The data flows in the direction of the arrow.
+
+By default, sends and receives block until the other side is ready.
+
 ### How to write Go codes
 
 #### Introduction
