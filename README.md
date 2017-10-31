@@ -621,6 +621,14 @@ The *io* package specifies the *io.Reader* interface, which represents the read 
 
 *Read* populates the given byte slice with data and returns the number of bytes populated and an error value. It returns an *io.EOF* error when the stream ends.
 
+#### Goroutines
+
+A *goroutine* is a lightweight thread managed by the Go runtime.
+
+    go f(x, y, z)
+
+The evaluation of f, x, y, and z happens in the current goroutine and the execution of f happens in the new goroutine.
+
 ### How to write Go codes
 
 #### Introduction
