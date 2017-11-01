@@ -669,6 +669,28 @@ The loop *for i := range ch* receives values from the channel repeatedly until i
 
 Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver **must** be told there are no more values coming.
 
+#### Select
+
+The *select* statement lets a goroutine wait on multiple communication operations.
+
+A *select* blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready.
+
+The *default* case in a *select* is run if no other case is ready.
+
+Use a *default* case to try a send or receive without blocking:
+
+    c, quit chan int
+
+    select {
+    case c <- x:
+        x, y = y, x+y
+    case <-quit:
+        fmt.Println("quit")
+        return
+    default:
+        // receiving from c would block
+    }
+
 ### How to write Go codes
 
 #### Introduction
