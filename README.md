@@ -691,6 +691,12 @@ Use a *default* case to try a send or receive without blocking:
         // receiving from c would block
     }
 
+#### sync.Mutex
+
+    mux sync.Mutex
+    mux.Lock()
+	defer mux.Unlock()
+
 ### How to write Go codes
 
 #### Introduction
