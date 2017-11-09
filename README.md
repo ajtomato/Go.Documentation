@@ -775,3 +775,11 @@ If you include the repository URL in the package's import path, go get will fetc
 If the specified package is not present in a workspace, go get will place it inside the first workspace specified by *GOPATH*. (If the package does already exist, *go get* skips the remote fetch and behaves the same as *go install*.)
 
 The *go get* command is able to locate and install the dependent package, too.
+
+### Effective Go
+
+#### Introduction
+
+#### Formatting
+
+*go fmt* or *gofmt* operates at the package level rather than source file level.
