@@ -783,3 +783,17 @@ The *go get* command is able to locate and install the dependent package, too.
 #### Formatting
 
 *go fmt* or *gofmt* operates at the package level rather than source file level.
+
+#### Commentary
+
+ Comments that appear before top-level declarations, with no intervening newlines, are extracted along with the declaration to serve as explanatory text for the item.
+
+ Every package should have a package comment, a block comment preceding the package clause. For multi-file packages, the package comment only needs to be present in one file, and any one will do. The package comment should introduce the package and provide information relevant to the package as a whole.
+
+ One adjustment *godoc* does do is to display indented text in a fixed-width font, suitable for program snippets.
+
+ Inside a package, any comment immediately preceding a top-level declaration serves as a doc comment for that declaration. Every exported (capitalized) name in a program should have a doc comment.
+
+ The first sentence should be a one-sentence summary that starts with the name being declared.
+
+ If every doc comment begins with the name of the item it describes, the output of godoc can usefully be run through grep.
