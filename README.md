@@ -797,3 +797,26 @@ The *go get* command is able to locate and install the dependent package, too.
  The first sentence should be a one-sentence summary that starts with the name being declared.
 
  If every doc comment begins with the name of the item it describes, the output of godoc can usefully be run through grep.
+
+ #### Names
+
+ The visibility of a name outside a package is determined by whether its first character is upper case.
+
+ By convention, packages are given lower case, single-word names; there should be no need for underscores or mixedCaps.
+
+ The package name is only the default name for imports; it need not be unique across all source code, and in the rare case of a collision the importing package can choose a different name to use locally.
+
+ Another convention is that the package name is the base name of its source directory.
+
+ Don't use the *import .* notation, which can simplify tests that must run outside the package they are testing, but should otherwise be avoided.
+
+Go doesn't provide automatic support for getters and setters. It's neither idiomatic nor necessary to put Get into the getter's name.
+
+    owner := obj.Owner()
+    if owner != user {
+        obj.SetOwner(user)
+    }
+
+By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc.
+
+If your type implements a method with the same meaning as a method on a well-known type, give it the same name and signature.
