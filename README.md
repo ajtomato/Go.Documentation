@@ -820,3 +820,41 @@ Go doesn't provide automatic support for getters and setters. It's neither idiom
 By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc.
 
 If your type implements a method with the same meaning as a method on a well-known type, give it the same name and signature.
+
+#### Semicolons
+
+#### Control structures
+
+In a := declaration a variable v may appear even if it has already been declared, provided:
+
+* this declaration is in the same scope as the existing declaration of v (if v is already declared in an outer scope, the declaration will create a new variable §),
+* the corresponding value in the initialization is assignable to v, and
+* there is at least one other variable in the declaration that is being declared anew.
+
+If you're looping over an array, slice, string, or map, or reading from a channel, a *range* clause can manage the loop.
+
+If you only need the first item in the range (the key or index), drop the second:
+
+    for key := range m {
+        if key.expired() {
+            delete(m, key)
+        }
+    }
+
+If you only need the second item in the range (the value), use the blank identifier, an underscore, to discard the first.
+
+Go has no comma operator and ++ and -- are statements not expressions. Thus if you want to run multiple variables in a for you should use parallel assignment (although that precludes ++ and --).
+
+    for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
+        a[i], a[j] = a[j], a[i]
+    }
+
+There is no automatic fall through, but cases can be presented in comma-separated lists.
+
+    func shouldEscape(c byte) bool {
+        switch c {
+        case ' ', '?', '&', '=', '#', '+', '%':
+            return true
+        }
+        return false
+    }
