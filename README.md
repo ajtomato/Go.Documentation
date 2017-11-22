@@ -858,3 +858,21 @@ There is no automatic fall through, but cases can be presented in comma-separate
         }
         return false
     }
+
+#### Functions
+
+#### Data
+
+*new(T)* allocates zeroed storage for a new item of type T and returns its address, a value of type *T.
+
+*make* applies only to maps, slices and channels and does not return a pointer.
+
+Arrays are values. Assigning one array to another copies all the elements.
+
+In particular, if you pass an array to a function, it will receive a copy of the array, not a pointer to it.
+
+The size of an array is part of its type. The types [10]int and [20]int are distinct.
+
+When printing a struct, the modified format *%+v* annotates the fields of the structure with their names, and for any value the alternate format *%#v* prints the value in full Go syntax.
+
+If you want to control the default format for a custom type, all that's required is to define a method with the signature *String()* string on the type.
