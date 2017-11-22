@@ -876,3 +876,7 @@ The size of an array is part of its type. The types [10]int and [20]int are dist
 When printing a struct, the modified format *%+v* annotates the fields of the structure with their names, and for any value the alternate format *%#v* prints the value in full Go syntax.
 
 If you want to control the default format for a custom type, all that's required is to define a method with the signature *String()* string on the type.
+
+#### Initialization
+
+A common use of *init* functions is to verify or repair correctness of the program state before real execution begins.
