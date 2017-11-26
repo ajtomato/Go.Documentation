@@ -880,3 +880,16 @@ If you want to control the default format for a custom type, all that's required
 #### Initialization
 
 A common use of *init* functions is to verify or repair correctness of the program state before real execution begins.
+
+#### Methods
+
+#### Interfaces and other types
+
+    str, ok := value.(string)
+    if ok {
+        fmt.Printf("string value is: %q\n", str)
+    } else {
+        fmt.Printf("value is not a string\n")
+    }
+
+If a type exists only to implement an interface and will never have exported methods beyond that interface, there is no need to export the type itself.
