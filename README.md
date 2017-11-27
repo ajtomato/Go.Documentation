@@ -893,3 +893,7 @@ A common use of *init* functions is to verify or repair correctness of the progr
     }
 
 If a type exists only to implement an interface and will never have exported methods beyond that interface, there is no need to export the type itself.
+
+#### The blank identifier
+
+If an assignment requires multiple values on the left side, but one of the values will not be used by the program, a blank identifier on the left-hand-side of the assignment avoids the need to create a dummy variable and makes it clear that the value is to be discarded.
