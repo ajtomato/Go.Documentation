@@ -897,3 +897,50 @@ If a type exists only to implement an interface and will never have exported met
 #### The blank identifier
 
 If an assignment requires multiple values on the left side, but one of the values will not be used by the program, a blank identifier on the left-hand-side of the assignment avoids the need to create a dummy variable and makes it clear that the value is to be discarded.
+
+#### Embedding
+
+    type Reader interface {
+        Read(p []byte) (n int, err error)
+    }
+
+    type Writer interface {
+        Write(p []byte) (n int, err error)
+    }
+
+    // ReadWriter is the interface that combines the Reader and Writer interfaces.
+    type ReadWriter interface {
+        Reader
+        Writer
+    }
+
+Only interfaces can be embedded within interfaces.
+
+*bufio* implements a buffered reader/writer, which it does by combining a reader and a writer into one struct using embedding: it lists the types within the struct but does not give them field names.
+
+    // ReadWriter stores pointers to a Reader and a Writer.
+    // It implements io.ReadWriter.
+    type ReadWriter struct {
+        *Reader  // *bufio.Reader
+        *Writer  // *bufio.Writer
+    }
+
+The embedded elements are pointers to structs and of course must be initialized to point to valid structs before they can be used. The ReadWriter struct could be written as
+
+    type ReadWriter struct {
+        reader *Reader
+        writer *Writer
+    }
+
+If we need to refer to an embedded field directly, the type name of the field, ignoring the package qualifier, serves as a field name, as it did in the Read method of our ReaderWriter struct. Here, if we needed to access the *log.Logger of a Job variable job, we would write job.Logger, which would be useful if we wanted to refine the methods of Logger.
+
+    type Job struct {
+        Command string
+        *log.Logger
+    }
+
+    func (job *Job) Logf(format string, args ...interface{}) {
+        job.Logger.Logf("%q: %s", job.Command, fmt.Sprintf(format, args...))
+    }
+
+Embedding types introduces the problem of name conflicts but the rules to resolve them are simple. First, a field or method X hides any other item X in a more deeply nested part of the type. If log.Logger contained a field or method called Command, the Command field of Job would dominate it. Second, if the same name appears at the same nesting level, it is usually an error.
