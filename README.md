@@ -944,3 +944,31 @@ If we need to refer to an embedded field directly, the type name of the field, i
     }
 
 Embedding types introduces the problem of name conflicts but the rules to resolve them are simple. First, a field or method X hides any other item X in a more deeply nested part of the type. If log.Logger contained a field or method called Command, the Command field of Job would dominate it. Second, if the same name appears at the same nesting level, it is usually an error.
+
+#### Concurrency
+
+Do not communicate by sharing memory; instead, share memory by communicating.
+
+Goroutine is lightweight, costing little more than the allocation of stack space. And the stacks start small, so they are cheap, and grow by allocating (and freeing) heap storage as required.
+
+Goroutines are multiplexed onto multiple OS threads.
+
+The capacity of the channel buffer limits the number of simultaneous calls to process.
+
+    var sem = make(chan int, MaxOutstanding)
+
+    func handle(r *Request) {
+        sem <- 1    // Wait for active queue to drain.
+        process(r)  // May take a long time.
+        <-sem       // Done; enable next request to run.
+    }
+
+    func Serve(queue chan *Request) {
+        for req := range queue {
+            sem <- 1
+            go func(req *Request) {
+                process(req)
+                <-sem
+            }(req)
+        }
+    }
