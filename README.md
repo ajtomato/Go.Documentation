@@ -972,3 +972,7 @@ The capacity of the channel buffer limits the number of simultaneous calls to pr
             }(req)
         }
     }
+
+#### Errors
+
+*recover* is only useful inside deferred functions.
