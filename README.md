@@ -859,11 +859,17 @@ There is no automatic fall through, but cases can be presented in comma-separate
         return false
     }
 
+*break* statements can be used to terminate a switch early.
+
 #### Functions
+
+The arguments to the deferred function (which include the receiver if the function is a method) are evaluated when the *defer* executes, not when the call executes.
 
 #### Data
 
 *new(T)* allocates zeroed storage for a new item of type T and returns its address, a value of type *T.
+
+The fields of a *composite literal* are laid out in order and must all be present. However, by labeling the elements explicitly as field:value pairs, the initializers can appear in any order, with the missing ones left as their respective zero values.
 
 *make* applies only to maps, slices and channels and does not return a pointer.
 
@@ -976,3 +982,5 @@ The capacity of the channel buffer limits the number of simultaneous calls to pr
 #### Errors
 
 *recover* is only useful inside deferred functions.
+
+#### A web server
